@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100&display=swap" rel="stylesheet">
+
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<style>
+	body {
+		margin: 0px;
+		font-family: sans-serif;
+	}
+	.taskbar {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+
+		background-color: blue;
+		color: white;
+		line-height: 31px; /*30px approximates to 29.6px (in my testing, so ~that for others). now it is 30.4px so it covers a bit of the main area but at least doesn't leave a whitepace. */ 
+	}
+	.taskbar a {
+		float: left;
+		padding: 10px;
+		text-decoration: none;
+		color: white;
+	}
+	.taskbar a:hover {
+		background-color: purple;
+	}
+	.taskbar a:active {
+		color: lightgreen;
+	}
+	.main {
+		margin-top: 50px;
+		padding-top: 20vh; /*this is > 20% from the top bc it is 20% total screen + taskbar height*/
+		background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../assets/stock.jpg');
+		height: calc(100vh - 20vh - 50px); /*take out taskbar and padding*/
+		text-align: center;
+	}
+	.title {
+		color: white;
+		font-size: 10vh;
+		font-weight: 100;
+		border-bottom: 1px solid white;
+		font-family: 'Roboto';
+	}
+</style>
+<body>
+	<div class='taskbar'>
+		<a href='about.html'>About</a>
+		<a href='research.html'>Papers</a>
+		<a href='resume.html'>Resume</a>
+		<a href='contact.html'>Contact</a>
+		<a href=''>Home</a>
+	</div>
+	<div class='main'>
+		<span class='title'>Mick Tobin</span>
+	</div>
+</body>
+</html>
