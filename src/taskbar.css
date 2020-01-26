@@ -1,0 +1,35 @@
+body {
+	margin: 0px;
+	font-family: 'Roboto';
+}
+.taskbar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+
+	background-color: #1137f5;
+	color: white;
+	line-height: 31px; /*30px approximates to 29.6px (in my testing, so ~that for others). now it is 30.4px so it covers a bit of the main area but at least doesn't leave a whitepace. */ 
+	font-weight: 300;
+}
+.taskbar a {
+	float: left;
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+}
+.taskbar a:hover {
+	background-color: purple;
+}
+.taskbar a:active {
+	color: lightgreen;
+}
+
+.title {
+	line-height: 7vh;
+	font-size: 7vh;
+	font-weight: 100;
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+}

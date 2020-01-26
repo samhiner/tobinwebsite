@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,400,300&display=swap" rel="stylesheet">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link rel='stylesheet' type='text/css' href='taskbar.css'> 
+	<style>
+		.main {
+			margin-top: 50px;
+			text-align: center;
+			width: 100vw;
+		}
+		.carousel {
+			width: 80%;
+			max-width: 8.5in;
+			overflow: hidden;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: #5e5e5e;
+			padding: 5px;
+
+			user-select: none;
+		}
+		.paper {
+			position: relative;
+			width: calc(100% / 3 - 3px); /*3px is margins between images*/
+		}
+		.caption {
+			color: white;
+			font-size: 15pt;
+		}
+		.buttons {
+			color: white;
+			cursor: default;
+			font-size: 15pt;
+		}
+		.buttons a {
+			padding-right: 3px; 
+			padding-left: 3px;
+		}
+		.buttons a:hover {
+			cursor: pointer;
+			color: lightblue;
+		}
+	</style>
+</head>
+<body>
+	<div class='taskbar'>
+		<a href='about.html'>About</a>
+		<a href='papers.html'>Papers</a>
+		<a href='resume.html'>Resume</a>
+		<a href='contact.html'>Contact</a>
+		<a href='index.html'>Home</a>
+	</div>
+	<div class='main'>
+		<div class='title'>Research Papers</div>
+		<div class='carousel'>
+			<img src='../assets/paper.png' class='paper' style='opacity: 50%' id='leftPaper'>
+			<img src='../assets/paper.png' class='paper' id='mainPaper'>
+			<img src='../assets/paper.png' class='paper' style='opacity: 50%' id='rightPaper'>
+			<br>
+			<span class='caption'>Test: Is Google a Monopoly</span>
+			<br>
+			<span class='buttons'>
+				<a onclick='goToPaper(currPaper - 1)'>❮</a>
+				<a id='button0' onclick='goToPaper(0)'>⬤</a>
+				<a id='button1' onclick='goToPaper(1)'>⬤</a>
+				<a id='button2' onclick='goToPaper(2)'>⬤</a>
+				<a id='button3' onclick='goToPaper(3)'>⬤</a>
+				<a id='button4' onclick='goToPaper(4)'>⬤</a>
+				<a onclick='goToPaper(currPaper + 1)'>❯</a>
+			</span>
+		</div>
+	</div>
+	<script>
+		var NUM_PAPERS = 5;
+		var currPaper = 0;
+
+		function convertPaperNum(num) {
+			if (num == NUM_PAPERS) {
+				return 0
+			} else if (num == -1) {
+				return NUM_PAPERS - 1
+			} else {
+				return num
+			}
+		}
+
+		function goToPaper(number) {
+			number = convertPaperNum(number);
+
+			document.getElementById('leftPaper').src = '../assets/paper' + String(convertPaperNum(number - 1)) + '.png';
+			document.getElementById('mainPaper').src = '../assets/paper' + String(number) + '.png';
+			document.getElementById('rightPaper').src = '../assets/paper' + String(convertPaperNum(number + 1)) + '.png';
+
+			document.getElementById('button' + String(currPaper)).style.color = 'white';
+			document.getElementById('button' + String(number)).style.color = 'grey';
+			currPaper = number;
+		}
+
+		goToPaper(0);
+
+	</script>
+</body>
+</html>
