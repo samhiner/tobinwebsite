@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,400,300&display=swap" rel="stylesheet">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link rel='stylesheet' type='text/css' href='taskbar.css'> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+		.main {
+			margin-top: 50px;
+			text-align: center;
+      height: calc(100vh - 50px);
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('assets/Rocks.jpg');
+      background-size: cover;
+      color: white;
+		}
+		.contactTable {
+			margin-left: auto;
+			margin-right: auto;
+			text-align: left;
+      
+		}
+		/*.contactTable td {
+			vertical-align: top;
+		}*/
+		.contactTable li {
+			margin-bottom: 12pt;
+		}
+    .contactTable li:before {
+      font-family: 'FontAwesome';
+    }
+	</style>
+</head>
+<body>
+	<div class='taskbar'>
+		<a href='about.html'>About</a>
+		<a href='papers.html'>Papers</a>
+		<a href='resume.html'>Resume</a>
+		<a href='contact.html'>Contact</a>
+		<a href='index.html'>Home</a>
+	</div>
+	<div class='main'>
+		<div class='title'>Contact Me</div>
+		<table class='contactTable'><tbody><tr>
+			<td>
+				Name<br>
+				<input type='text' id='name'><br><br>
+				Email Address<br>
+				<input type='text' id='email'><br><br>
+				Message<br>
+				<input type='text' id='message'><br><br>
+
+				<button onclick='submitContact()'>Submit</button>
+			</td>
+			<td>
+				<ul>
+					<li class='fa fa-envelope'>&nbsp;&nbsp;Email: email@email.com</li><br>
+					<li class='fa fa-phone'>&nbsp;&nbsp;Phone: (123) 456-7890</li><br>
+					<li class='fa fa-linkedin'>&nbsp;&nbsp;LinkedIn: Mick Tobin</li><br>
+					<li class='fa fa-home'>&nbsp;&nbsp;Residence: Mooresville, NC</li>
+
+				</ul>
+			</td>
+		</tr></tbody></table>
+	</div>
+	<script>
+		function submitContact() {
+			//ajax request to mailing script
+			//do fallbacks
+		}
+	</script>
+</body>
+</html>

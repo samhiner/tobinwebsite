@@ -25,9 +25,13 @@
 			position: relative;
 			width: calc(100% / 3 - 3px); /*3px is margins between images*/
 		}
+		#mainPaper:hover {
+			cursor: pointer;
+		}
 		.caption {
 			color: white;
 			font-size: 15pt;
+			user-select: text;
 		}
 		.buttons {
 			color: white;
@@ -42,6 +46,12 @@
 			cursor: pointer;
 			color: lightblue;
 		}
+		.description {
+			width: 80%;
+			max-width: 8.5in;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	</style>
 </head>
 <body>
@@ -55,11 +65,11 @@
 	<div class='main'>
 		<div class='title'>Research Papers</div>
 		<div class='carousel'>
-			<img src='../assets/paper.png' class='paper' style='opacity: 50%' id='leftPaper'>
-			<img src='../assets/paper.png' class='paper' id='mainPaper'>
-			<img src='../assets/paper.png' class='paper' style='opacity: 50%' id='rightPaper'>
+			<img src='../assets/loadingpaper.jpg' onclick='goToPaper(currPaper - 1)' class='paper' style='opacity: 50%' id='leftPaper'>
+			<a href='../assets/Is Google A Monopoly_.pdf'><img src='../assets/loadingpaper.jpg' class='paper' id='mainPaper'></a>
+			<img src='../assets/loadingpaper.jpg' onclick='goToPaper(currPaper + 1)' class='paper' style='opacity: 50%' id='rightPaper'>
 			<br>
-			<span class='caption'>Test: Is Google a Monopoly</span>
+			<span class='caption' id='caption'>Caption Loading...</span>
 			<br>
 			<span class='buttons'>
 				<a onclick='goToPaper(currPaper - 1)'>❮</a>
@@ -70,10 +80,19 @@
 				<a id='button4' onclick='goToPaper(4)'>⬤</a>
 				<a onclick='goToPaper(currPaper + 1)'>❯</a>
 			</span>
+		</div><br>
+		<div class='description'>
+			<h2 style='font-weight: 100;'>Why I Wrote the Papers</h2>
+			<p style='text-align: left'>Lorem ipsum.....</p>
 		</div>
 	</div>
 	<script>
+		//TODO papers should be links and do a loading... paper
+
+		//to add/remove a paper, add the first page as a jpg it in the assets folder as paperx.jpg, edit the following constants, and add a button above
 		var NUM_PAPERS = 5;
+		var PAPER_NAMES = ['Is Google a Monopoly', 'Work In Progress', 'Work In Progress', 'Work In Progress', 'Work In Progress']
+		var PAPER_LINKS = ['../assets/paper0.pdf', '', '', '', '']
 		var currPaper = 0;
 
 		function convertPaperNum(num) {
@@ -89,13 +108,18 @@
 		function goToPaper(number) {
 			number = convertPaperNum(number);
 
-			document.getElementById('leftPaper').src = '../assets/paper' + String(convertPaperNum(number - 1)) + '.png';
-			document.getElementById('mainPaper').src = '../assets/paper' + String(number) + '.png';
-			document.getElementById('rightPaper').src = '../assets/paper' + String(convertPaperNum(number + 1)) + '.png';
+			document.getElementById('mainPaper').parentElement.href = PAPER_LINKS[number];
 
-			document.getElementById('button' + String(currPaper)).style.color = 'white';
+			document.getElementById('leftPaper').src = '../assets/paper' + String(convertPaperNum(number - 1)) + 'img.jpg';
+			document.getElementById('mainPaper').src = '../assets/paper' + String(number) + 'img.jpg';
+			document.getElementById('rightPaper').src = '../assets/paper' + String(convertPaperNum(number + 1)) + 'img.jpg';
+
+			//this way authority is returned to the stylesheet so the :hover color still works
+			document.getElementById('button' + String(currPaper)).style.color = '';
 			document.getElementById('button' + String(number)).style.color = 'grey';
 			currPaper = number;
+
+			document.getElementById('caption').innerHTML = PAPER_NAMES[number]
 		}
 
 		goToPaper(0);
